@@ -11,22 +11,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->decimal('amount', 10, 2);
-            $table->enum('type', ['income', 'expense']);
-            $table->foreignId('category_id')->constrained();
-            $table->string('description')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('categories');
     }
 };
